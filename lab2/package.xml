@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>lab1</name>
+  <name>lab2</name>
   <version>1.0.0</version>
-  <description>Laboratorium 1</description>
+  <description>The lab2 package</description>
 
-  <maintainer email="mariusz.slapek@gmail.com">Mariusz Slapek</maintainer>
+  <maintainer email="mariusz.slapek@gmail.com">Mariusz Słapek</maintainer>
+
 
 
   <license>BSD</license>
-
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>rospy</build_depend>
@@ -18,9 +18,7 @@
   <exec_depend>rospy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
 
-
   <export>
-
 
   </export>
 </package>
