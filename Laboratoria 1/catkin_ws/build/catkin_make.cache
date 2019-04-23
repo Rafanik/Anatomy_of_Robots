@@ -1,2 +1,0 @@
-lab1:ourTurtle:turtle
--DCATKIN_DEVEL_PREFIX=/home/mslapek/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/mslapek/catkin_ws/install -G Unix Makefiles
