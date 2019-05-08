@@ -16,13 +16,15 @@ with open('out.yaml', 'w') as outFile:
         coeffs = dh[it]
         outFile.write(it + ': \n')
         outFile.write("   " + 'len: ' + str(math.sqrt(math.pow(coeffs[1], 2) + math.pow(coeffs[0], 2))) + '\n')
-        outFile.write("   " + 'xyz: ' + '0.0 ' + str(0.5*coeffs[0]) + ' ' + str(0.5 * coeffs[1]) + '\n')
+        outFile.write("   " + 'xyz: ' + ' ' + str(0.5*coeffs[0]) + ' 0.0 ' + str(0.5 * coeffs[1]) + '\n')
         
-        if(coeffs[1] == 0):
-            outFile.write("   " + 'rpy: ' + '0.0 ' + str(pi/2) + ' ' + str(pi/2) + '\n')
-        else:
-            outFile.write("   " + 'rpy: ' + '0.0 0.0 0.0' + '\n')
+#        if(coeffs[1] == 0):
+#           outFile.write("   " + 'rpy: ' + ' ' + str(pi/2) + ' 0.0 ' + str(pi/2) + '\n')
+#        else:
+ #           outFile.write("   " + 'rpy: ' + '0.0 0.0 0.0' + '\n')
         
+
+        outFile.write("   " + 'rpy: ' + ' ' + str(coeffs[2]) + ' 0.0 ' + str(coeffs[3]) + '\n')
         outFile.write("   " + 'limit: ' + str(-1 *math.sqrt(math.pow(coeffs[1], 2) + math.pow(coeffs[0], 2))) + '\n')
         
         
