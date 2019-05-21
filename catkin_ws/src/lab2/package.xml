@@ -2,14 +2,16 @@
 <package format="2">
   <name>lab2</name>
   <version>1.0.0</version>
-  <description>Manipulator</description>
+  <description>Laboratory</description>
 
-  <maintainer email="rafalszczepanik1998@gmail.com">Rafal Szczepanik</maintainer>
+  <maintainer email="mariusz.slapek@gmail.com">Mariusz Slapek</maintainer>
 
   <license>BSD</license>
 
   <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>message_generation</build_depend>
   <build_depend>joint_state_publisher</build_depend>
+  <build_depend>sensor_msgs</build_depend>
   <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>
   <build_depend>std_msgs</build_depend>
@@ -18,8 +20,10 @@
   <build_export_depend>rospy</build_export_depend>
   <build_export_depend>std_msgs</build_export_depend>
   <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rospy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
   <exec_depend>std_msgs</exec_depend>
 
   <export>
