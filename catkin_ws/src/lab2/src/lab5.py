@@ -22,7 +22,7 @@ def jintFunction(data):
 	r14 = float(data.pose.position.x)
 	r24 = float(data.pose.position.y)
 	r34 = float(data.pose.position.z)
-	A3 = 1.0
+	A3 = 2.0
 	E = 0.5
 
 
@@ -48,7 +48,7 @@ def jintFunction(data):
 	newJS.header.stamp = rospy.Time.now()
 	newJS.header.frame_id = 'base_link'
 	newJS.name = ['link1_join1', 'join2_link3', 'join3_link4']
-	newJS.position = [D1_sol-2, theta2_sol, theta3_sol]
+	newJS.position = [D1_sol-1, theta2_sol, theta3_sol]
 	newJS.velocity = []
 	newJS.effort = []
 
@@ -66,4 +66,5 @@ if __name__ == '__main__':
     pub = rospy.Publisher('joint_states', JointState, queue_size=10)
     service = rospy.Service('jint', params, jintFunction)
     rospy.spin()
+
 

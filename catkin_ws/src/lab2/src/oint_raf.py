@@ -9,6 +9,7 @@ from sensor_msgs.msg import *
 from tf.transformations import *
 from visualization_msgs.msg import Marker
 from geometry_msgs.msg import PoseStamped
+from nav_msgs.msg import Path
 
 
 # frequency declaration
@@ -25,6 +26,9 @@ def methodInterpolation(method, start, end, temp, it):
 		pos.append(start[5]+(end[5]-start[5])/temp*it) 
 	return pos
 
+start = [1.6, 1.6, 0, 0, 0 ,0]
+
+path = Path()
 
 def ointFunction(params_oint):
     if params_oint.time <= 0:
@@ -34,7 +38,7 @@ def ointFunction(params_oint):
 
     # declaration of start and end point 
     
-    start = [0, 0, 0, 0, 0 ,0]
+    global start
     end = [float(params_oint.dx), float(params_oint.dy), float(params_oint.dz), float(params_oint.rx), float(params_oint.ry), float(params_oint.rz)]
 
 	
@@ -42,6 +46,8 @@ def ointFunction(params_oint):
     x=0
     y=0
     z=0
+
+
 	
     for it in range(0, int(temp)+1):
 	pos = methodInterpolation("Linear", start, end, temp, it)
@@ -66,6 +72,11 @@ def ointFunction(params_oint):
 	poseR.pose.position.x = x
 	poseR.pose.position.y = y
 	poseR.pose.position.z = z
+
+	global path
+	path.header = poseR.header
+	path.poses.append(poseR)
+
 	
 	xq, yq, zq, wq = quaternion_from_matrix(end_matrice)
 
@@ -76,10 +87,12 @@ def ointFunction(params_oint):
 
 	# publishing the position via proper topic
 	publisher.publish(poseR)
+    	path_pub.publish(path)
 	rate = rospy.Rate(50)
 	rate.sleep()
 	print(pos)
 
+    start = pos
     current_time = 0
     return (str(params_oint.dx)+" "+str(params_oint.dy)+" "+str(params_oint.dz))
 
@@ -87,5 +100,6 @@ def ointFunction(params_oint):
 if __name__ == "__main__":
     rospy.init_node('oint_node')
     publisher = rospy.Publisher('oint', PoseStamped , queue_size=10)
+    path_pub = rospy.Publisher('trajectory', Path, queue_size=10)
     s = rospy.Service('oint', params_oint, ointFunction)
     rospy.spin()
