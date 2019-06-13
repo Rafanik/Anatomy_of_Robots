@@ -1,8 +1,0 @@
-prefix=/home/mslapek/catkin_ws/devel
-
-Name: ourTurtle
-Description: Description of ourTurtle
-Version: 1.0.0
-Cflags: 
-Libs: -L/home/mslapek/catkin_ws/devel/lib 
-Requires: 
